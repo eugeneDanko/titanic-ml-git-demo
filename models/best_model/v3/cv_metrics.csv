@@ -1,0 +1,7 @@
+model,roc_auc_mean,roc_auc_std,pr_auc_mean,pr_auc_std,fit_time_mean,score_time_mean
+LogisticRegression,0.86166,0.01737,0.83238,0.00931,0.02396,0.01024
+KNeighborsClassifier,0.82703,0.02764,0.73718,0.01258,0.01427,0.4214
+DecisionTreeClassifier,0.83028,0.01055,0.73706,0.01805,0.01595,0.00992
+RandomForestClassifier,0.86662,0.01708,0.84882,0.01558,0.10074,0.01534
+GradientBoostingClassifier,0.87849,0.0208,0.85916,0.01954,0.11582,0.01
+SVC,0.85325,0.01627,0.81455,0.03631,0.07026,0.0144

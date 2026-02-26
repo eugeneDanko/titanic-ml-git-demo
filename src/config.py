@@ -1,31 +1,46 @@
 """
-Конфигурация препроцессинга на основе EDA анализа
+Конфигурация проекта Titanic ML.
+Упрощенная версия для понимания структуры.
 """
-from dataclasses import dataclass
+from pathlib import Path
 
+# Базовые пути
+PROJECT_ROOT = Path(__file__).parent.parent
+DATA_DIR = PROJECT_ROOT / "data"
+MODELS_DIR = PROJECT_ROOT / "models"
+DATA_PATH = DATA_DIR / "raw"
+PROCESSED_DATA_PATH = DATA_DIR / "processed"
+TRAIN_FILE = "train.csv"
+TEST_FILE = "test.csv"  # если есть
+MODELS_PATH = MODELS_DIR  # переименовать для консистентности
 
-@dataclass
-class PreprocessingConfig:
-    """Настройки препроцессинга на основе EDA"""
+# Настройки данных
+TARGET_COLUMN = "Survived"
+COLUMNS_TO_DROP = ["PassengerId", "Cabin", "Ticket", "Name"]
+CATEGORICAL_FEATURES = ["Sex", "Embarked", "Pclass"]
+NUMERICAL_FEATURES = ["Age", "Fare", "SibSp", "Parch"]
 
-    # Для заполнения пропусков (из твоего EDA: Age 20% пропусков)
-    AGE_FILL_STRATEGY = 'median'  # или 'mean', 'cluster'
-    EMBARKED_FILL_VALUE = 'mode'  # мода из твоего EDA
+# Настройки препроцессинга
+AGE_IMPUTE_STRATEGY = "median"
+EMBARKED_IMPUTE_STRATEGY = "most_frequent"
+FARE_IMPUTE_STRATEGY = "median"
 
-    # Для кодирования (из твоего MI анализа)
-    CATEGORICAL_FEATURES = ['Sex', 'Embarked', 'Pclass']
-    NUMERICAL_FEATURES = ['Age', 'Fare', 'SibSp', 'Parch']
+# Бининг из EDA
+FARE_BINS = [0, 7.91, 14.45, 31.0, 513.32]
+FARE_LABELS = ["very_low", "low", "medium", "high"]
 
+AGE_BINS = [0, 12, 18, 35, 60, 100]
+AGE_LABELS = ["child", "teen", "young_adult", "adult", "senior"]
 
-    FARE_BINS = [0, 7.91, 14.45, 31.00, 513.32]  # квантили по EDA
-    FARE_LABELS = ['low', 'medium', 'high', 'very_high']
+# Настройки моделей
+RANDOM_STATE = 42
+TEST_SIZE = 0.2
 
-    AGE_BINS = [0, 16, 36, 52, 82]
-    AGE_LABELS = ['child', 'younger', 'adult', 'old'] # для квантилей по EDA
+# Пути для сохранения
+SCALERS_DIR = MODELS_DIR / "scalers"
+METADATA_DIR = MODELS_DIR / "metadata"
+BEST_MODEL_DIR = MODELS_DIR / "best_model"
 
-    CREATE_FAMILY_SIZE = True
-    CREATE_IS_ALONE = True
-
-    # Пути к данным
-    RAW_DATA_PATH = 'data/raw/train.csv'
-    PROCESSED_DATA_PATH = 'data/processed/train_processed.csv'
+# Создаем директории (если их нет)
+for dir_path in [SCALERS_DIR, METADATA_DIR, BEST_MODEL_DIR]:
+    dir_path.mkdir(parents=True, exist_ok=True)
