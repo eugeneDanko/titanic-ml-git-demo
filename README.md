@@ -51,43 +51,7 @@
  - формируется итоговый результат
  - отбираются N пассажиров с наиболее вероятно выжившие
 ## Структура
-titanic-ml-git-demo/
-│
-├── .idea/
-├── .ipynb_checkpoints/
-├── configs/
-│
-├── data/
-│   ├── raw/              # исходные train.csv и test.csv
-│   └── processed/        # обработанные данные (при необходимости)
-│
-├── figures/              # графики и визуализации
-│
-├── models/
-│   ├── best_model/       # лучшие baseline модели
-│   ├── metadata/         # метрики, результаты CV
-│   └── scalers/          # сохранённые трансформеры (если используются отдельно)
-│
-├── notebooks/            # EDA и эксперименты
-│
-├── reports/              # отчёты
-│
-├── src/
-│   ├── __init__.py
-│   ├── config.py
-│   ├── load_utilities.py
-│   ├── preprocessing.py
-│   ├── train.py
-│   ├── train_cv_evaluate.py
-│   ├── train_multiple.py
-│   ├── model_tuning.py
-│   ├── final_model.py
-│   └── predict.py
-│
-├── test/
-│   └── pipline_preprocessing.py
-│
-├── .gitignore
-├── README.md
-├── requirements.txt
-└── setup.py
+data/ - содержит исходные и преобразованные данные
+models/ - модели, параметры моделей, лучшие модели по метрикам, трансформаторы
+notebooks/ - EDA, эксперименты, построение и откладка продакшен кода
+src/ - утилиты, пути к данным и проектные константы, пайлайны: препроцессинг, тренировку и оценку моделей, выбор и дообучение наилучшей модели, проверка качества модели по бизнес-метрикам
