@@ -1,0 +1,31 @@
+{
+  "scalers_used": [
+    "StandardScaler",
+    "MinMaxScaler"
+  ],
+  "feature_scaled": [
+    "Age",
+    "Fare",
+    "SibSp",
+    "Parch",
+    "FamilySize"
+  ],
+  "continuous_features": [
+    "Age",
+    "Fare"
+  ],
+  "discrete_features": [
+    "SibSp",
+    "Parch",
+    "FamilySize"
+  ],
+  "categorical_features": [
+    "Sex",
+    "Embarked",
+    "Pclass",
+    "FareBin",
+    "AgeGroups",
+    "IsAlone"
+  ],
+  "date": "03.02.2026"
+}

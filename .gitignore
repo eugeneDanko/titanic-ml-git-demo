@@ -1,13 +1,15 @@
+#python/jupyter
 __pycache__/
 *.pyc
 .venv/
 .ipynb_checkpoints/
 
+#data
 data/raw/
 data/processed/
 
+
 *.pkl
-*.joblib
 *.pt
 *.pth
 *.onnx
@@ -15,6 +17,12 @@ data/processed/
 logs/
 wandb/
 mlruns/
+
+# Пакеты
+*.egg-info/
+dist/
+build/
+
 
 .idea/
 .vscode/
